@@ -1,0 +1,26 @@
+{
+  "name": "cordova-plugin-app-update-by-store",
+  "version": "0.0.1",
+  "description": "app update by app store",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/initMrD/cordova-plugin-app-update-by-app-store.git"
+  },
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "app",
+    "update",
+    "appupdate",
+    "plugin"
+  ],
+  "author": "initmrd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/initMrD/cordova-plugin-app-update-by-app-store/issues"
+  },
+  "homepage": "https://github.com/initMrD/cordova-plugin-app-update-by-app-store#readme"
+}
