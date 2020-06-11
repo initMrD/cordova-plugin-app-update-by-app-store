@@ -15,8 +15,8 @@
         <engine name="cordova-android" version=">=6.3.0"/>
     </engines>
 
-    <js-module src="www/AppUpdateByStorePlugin.js">
-        <clobbers target="cordova.appUpdateByStorePlugin"/>
+    <js-module src="www/AppUpdateByStorePlugin.js" name="AppUpdateByStorePlugin">
+        <clobbers target="AppUpdateByStorePlugin"/>
     </js-module>
 
     <!-- android -->
