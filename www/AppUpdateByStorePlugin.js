@@ -1,15 +1,6 @@
-"use strict";
-
 var exec = cordova.require("cordova/exec");
 var AppUpdateByStore = {
-    /**
-     * 初始化ocr
-     * @param successCallback
-     * @param errorCallback
-     */
     checkUpdate: function (url, successCallback, errorCallback) {
-
-
         if (errorCallback == null) {
             errorCallback = function () {
             };
