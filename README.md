@@ -15,6 +15,7 @@ ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by
 - version 版本号 低于该版本提示升级
 - forceVersion 强制升级版本号 低于该版本强制升级
 - description 升级提示
+- appId 苹果商店的APPID（IOS only）
 - store 要搜索的商店列表的包名（Android only）
 - downloadWeb 如果用户手机里未安装应用上架的应用商城需要跳转的页面（Android only）
 
@@ -25,7 +26,8 @@ ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by
   "ios": {
     "version": "0.0.2",
     "forceVersion": "0.0.1",
-    "description": "有新的版本了，赶快来下载吧！"
+    "description": "有新的版本了，赶快来下载吧！",
+    "appId": "458587755"
   },
   "android": {
     "version": "0.0.2",
@@ -37,6 +39,7 @@ ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by
     ]
   }
 }
+
 ```
 ## 3、项目中调用
 app.module.ts
