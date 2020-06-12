@@ -1,6 +1,25 @@
 # cordova-plugin-app-update-by-app-store
 跳转app商店升级应用
 
+
+## 代码流程
+```mermaid
+graph TD
+update{判断是否需要升级}
+update-->|是| force{判断是否需要强制升级}
+update-->|否| finish[结束]
+force-->|是| forceY[弹窗,不显示取消]
+force-->|否| forceN[弹窗,显示取消]
+forceN--> user{用户点击按钮}
+user-->|取消| finish
+user-->|升级| store{搜索商城}
+store-->|搜索到商城| toStore[跳转商城]
+store-->|搜索不到商城| toDownload[跳转下载网页]
+forceY--> user2{用户点击按钮}
+user2-->|升级| store
+```
+
+
 ## 1、安装
 ```
 npm i @initmrd/app-update  
@@ -90,41 +109,4 @@ export class AppComponent {
         });
     }
 }
-```
-
-## 代码流程
-```flow
-st=>start: 开始
-e=>end: 结束
-dismiss=>end: 隐藏弹窗
-update=>operation: 判断是否需要升级
-force=>operation: 判断是否需要强制升级
-store=>operation: 判断是否用户是否已安装上架商城
-toStore=>operation: 跳转商城
-toDownload=>operation: 跳转下载页面
-alertForce=>operation: 弹窗,无取消
-alert=>operation: 弹窗,有取消
-userOp=>operation: 用户判断是否升级
-userUpdateOp=>operation: 用户点击升级
-updateCond=>condition: version > localVersion
-forceCond=>condition: forceVersion > localVersion
-userCond=>condition: yes or no
-storeCond=>condition: yes or no
-
-st->update->updateCond
-updateCond(yes,right)->force
-updateCond(no)->e
-force->forceCond
-forceCond(yes,right)->alertForce
-alertForce->userUpdateOp
-userUpdateOp->store
-forceCond(no)->alert
-alert->userOp
-userOp->userCond
-userCond(no)->dismiss
-userCond(yes,right)->store
-store->storeCond
-storeCond(yes)->toStore
-storeCond(no)->toDownload
-
 ```
