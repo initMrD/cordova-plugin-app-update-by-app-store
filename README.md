@@ -91,3 +91,24 @@ export class AppComponent {
     }
 }
 ```
+                        
+## 主流市场对应包名
+- com.android.vending    Google Play
+
+- com.tencent.android.qqdownloader    应用宝
+
+- com.qihoo.appstore    360手机助手
+
+- com.baidu.appsearch    百度手机助
+
+- com.xiaomi.market    小米应用商店
+
+- com.wandoujia.phoenix2    豌豆荚
+
+- com.huawei.appmarket    华为应用市场
+
+- com.taobao.appcenter    淘宝手机助手
+
+- com.hiapk.marketpho    安卓市场
+
+- cn.goapk.market        安智市场
