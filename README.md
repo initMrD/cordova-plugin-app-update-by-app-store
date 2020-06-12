@@ -1,25 +1,6 @@
 # cordova-plugin-app-update-by-app-store
 跳转app商店升级应用
 
-
-## 代码流程
-```mermaid
-graph TD
-update{判断是否需要升级}
-update-->|是| force{判断是否需要强制升级}
-update-->|否| finish[结束]
-force-->|是| forceY[弹窗,不显示取消]
-force-->|否| forceN[弹窗,显示取消]
-forceN--> user{用户点击按钮}
-user-->|取消| finish
-user-->|升级| store{搜索商城}
-store-->|搜索到商城| toStore[跳转商城]
-store-->|搜索不到商城| toDownload[跳转下载网页]
-forceY--> user2{用户点击按钮}
-user2-->|升级| store
-```
-
-
 ## 1、安装
 ```
 npm i @initmrd/app-update  
