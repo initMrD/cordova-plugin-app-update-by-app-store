@@ -232,9 +232,9 @@ public class AppUpdateByStore extends CordovaPlugin {
      */
     public void showDialog(boolean isForce, String desc) {
         AlertDialog.Builder ab = new AlertDialog.Builder(new ContextThemeWrapper(mActivity, android.R.style.Theme_DeviceDefault_Light_Dialog_Alert));
-        ab.setTitle("升级");
+        ab.setTitle("版本更新");
         ab.setMessage(desc);
-        ab.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+        ab.setPositiveButton("进行更新", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 点击升级之后弹窗不关闭
@@ -249,7 +249,7 @@ public class AppUpdateByStore extends CordovaPlugin {
             }
         });
         if (!isForce) {
-            ab.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            ab.setNegativeButton("以后再说", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // 点击升级再点取消，则可以关闭
