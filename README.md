@@ -115,3 +115,13 @@ export class AppComponent {
 - com.hiapk.marketpho    安卓市场
 
 - cn.goapk.market        安智市场
+
+## 其他方法
+### 获取远端版本号
+```
+this.appUpdateByStore.getUpdateVersion(environment.updateUrl, (result) => {
+    // 成功
+    }, (err) => {
+    // 失败
+    });
+```
