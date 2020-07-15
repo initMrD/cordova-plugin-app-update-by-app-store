@@ -20,7 +20,7 @@ ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by
 - downloadWeb 如果用户手机里未安装应用上架的应用商城需要跳转的页面（Android only）
 
 ### 配置文件内容
-
+update.json
 ```json
 {
   "ios": {
@@ -33,7 +33,7 @@ ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by
     "version": "0.0.2",
     "forceVersion": "0.0.1",
     "description": "有新的版本了，赶快来下载吧！",
-    "downloadWeb": "http://192.168.0.104",
+    "downloadWeb": "http://192.168.0.104/app.html",
     "store": [
       "com.huawei.appmarket"
     ]

@@ -60,20 +60,43 @@ public class AppUpdateByStore extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         mActivity = cordova.getActivity();
+        mCallback = callbackContext;
         if (action.equals("checkUpdate")) {
-            checkUpdate(args, callbackContext);
+            checkUpdate(args);
+            return true;
+        } else if (action.equals("getUpdateVersion")) {
+            getUpdateVersion(args);
             return true;
         }
         return false;
+    }
+
+    public void getUpdateVersion(JSONArray data) {
+        try {
+            String path = data.getString(0);//更新检查文件地址
+            URL url = new URL(path);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestMethod("GET");
+            int responseCode = conn.getResponseCode();
+            if (responseCode == 200) {
+                // 从服务器获得一个输入流
+                InputStream is = conn.getInputStream();
+                String iss = is2String(is);
+                mCallback.success(parseJson(iss, "version"));
+            }
+        } catch (Exception e) {
+            mCallback.error(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
      * 检查更新
      *
      * @param data
-     * @param callbackContext
      */
-    public void checkUpdate(JSONArray data, CallbackContext callbackContext) {
+    public void checkUpdate(JSONArray data) {
         try {
             String path = data.getString(0);//更新检查文件地址
             URL url = new URL(path);
@@ -86,11 +109,8 @@ public class AppUpdateByStore extends CordovaPlugin {
                 InputStream is = conn.getInputStream();
                 check(is);
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (Exception e) {
+            mCallback.error(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -114,7 +134,10 @@ public class AppUpdateByStore extends CordovaPlugin {
         storeList = parseJsonArray(iss, "store");
         // 需要升级则弹出提示
         if (update) {
+            mCallback.success("update");
             showDialog(forceUpdate, description);
+        } else {
+            mCallback.success("version is latest");
         }
     }
 
