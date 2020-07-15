@@ -3,10 +3,10 @@
 
 ## 1、安装
 ```
-npm i @initmrd/app-update  
+npm i @initmrd/app-update --save
 ```
 ```
-ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by-app-store.git
+ionic cordova plugin add https://github.com/initMrD/cordova-plugin-app-update-by-app-store.git --save
 ```
 ## 2、将配置文件放到服务器静态资源目录下
 

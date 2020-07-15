@@ -71,6 +71,10 @@ public class AppUpdateByStore extends CordovaPlugin {
         return false;
     }
 
+    /**
+     * 获取远程版本号
+     * @param data
+     */
     public void getUpdateVersion(JSONArray data) {
         try {
             String path = data.getString(0);//更新检查文件地址
