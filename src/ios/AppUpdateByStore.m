@@ -9,6 +9,32 @@
     NSString *url = command.arguments[0];
     [self getNetJson:url];
 }
+// 获取远端版本号入口
+- (void)getUpdateVersion:(CDVInvokedUrlCommand*)command{
+    [self getUpdate:command];
+}
+
+// 获取远端版本号
+- (void)getUpdate:(CDVInvokedUrlCommand*)command{
+    NSString *url_str = command.arguments[0];
+    //请求路径
+    NSURL *url = [NSURL URLWithString:url_str];
+    //创建请求对象 默认get
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    //获得会话对象
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            //解析服务器返回的数据
+            //说明：（此处返回的数据是JSON格式的，因此使用NSJSONSerialization进行反序列化处理）
+            NSDictionary *dict = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil] objectForKey:@"ios"];
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[dict objectForKey:@"version"]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+
+    }];
+    [dataTask resume];
+}
 
 // 从服务器获取json
 - (void)getNetJson:(NSString*)url_str{

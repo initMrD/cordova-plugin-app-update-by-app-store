@@ -5,4 +5,5 @@
 - (void)setAppId:(NSString *)appId;
 - (NSString*) appId;
 - (void)checkUpdate:(CDVInvokedUrlCommand*)command;
+- (void)getUpdateVersion:(CDVInvokedUrlCommand*)command;
 @end
