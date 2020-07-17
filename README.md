@@ -119,9 +119,9 @@ export class AppComponent {
 ## 其他方法
 ### 获取远端版本号
 ```
-this.appUpdateByStore.getUpdateVersion(environment.updateUrl, (result) => {
-    // 成功
-    }, (err) => {
-    // 失败
+this.appUpdateByStore.getRemoteVersion(environment.updateUrl).then(value => {
+
+    }).catch(reason => {
+
     });
 ```
