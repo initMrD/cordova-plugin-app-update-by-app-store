@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/initMrD/cordova-plugin-app-update-by-app-store.git"
+    "url": "https://github.com/initMrD/cordova-plugin-app-update-by-app-store.git"
   },
   "keywords": [
     "cordova",
