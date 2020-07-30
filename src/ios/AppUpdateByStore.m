@@ -28,8 +28,11 @@
             //解析服务器返回的数据
             //说明：（此处返回的数据是JSON格式的，因此使用NSJSONSerialization进行反序列化处理）
             NSDictionary *dict = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil] objectForKey:@"ios"];
-            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[dict objectForKey:@"version"]];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            NSString *version = [dict objectForKey:@"version"];
+            if(version!=nil){
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:version];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }
         }
 
     }];
